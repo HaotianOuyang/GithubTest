@@ -1,66 +1,112 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
+public class JobCollection : IJobCollection
+{
+    private IJob[] jobs;
+    private uint count;
 
-public class JobCollection : IJobCollection {
-	private IJob[] jobs;
-	private uint count;
-
-	public JobCollection( uint capacity ) {
-		if( !( capacity >= 1 ) ) throw new ArgumentException();
-		jobs = new IJob[capacity];
+    public JobCollection(uint capacity)
+    {
+        if (!(capacity >= 1)) throw new ArgumentException();
+        jobs = new IJob[capacity];
         count = 0;
-	}
+    }
 
-	public uint Capacity {
-		get { return (uint) jobs.Length; }
-	}
+    public uint Capacity
+    {
+        get { return (uint)jobs.Length; }
+    }
 
-	public uint Count {
-		get { return count; }
-	}
+    public uint Count
+    {
+        get { return count; }
+    }
 
-	public bool Add( IJob job ) {
+    public bool Add(IJob job)
+    {
         //To be implemented by students
-        if(Count < Capacity)
+        bool added = false;
+        foreach(IJob job2 in jobs)
         {
-            for (int i = 0; i < Capacity; i++)
+            if(job2.Id == job.Id)
             {
-                if (jobs[i].Id == job.Id)
-                {                 
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-
+                added = true;
             }
-
-            //   Count = Count + 1;
-            // Capacity = Capacity;
+            else
+            {
+                added = false;
+            }
         }
-        throw new System.NotImplementedException();
+
+        if (this.Capacity > this.Count || job == null || added)
+        {
+            return false;
+        }
+        else
+        {
+            jobs[count++] = job;
+            return true;
+        }
     }
 
-    public bool Contains(uint id) {
+    public bool Contains(uint id)
+    {
         //To be implemented by students
-        throw new System.NotImplementedException();
-
+        for (int i = 0; i < Capacity; i++)
+        {
+            if (jobs[i].Id == id)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public IJob? Find( uint id ) {
+    public IJob? Find(uint id)
+    {
         //To be implemented by students
-        throw new System.NotImplementedException();
+
+        for (int i = 0; i < Capacity; i++)
+        {
+            if (jobs[i].Id == id)
+            {
+                return jobs[i];
+            }
+        }
+        return null;
 
     }
 
-    public bool Remove(uint id) {
+    public bool Remove(uint id)
+    {
         //To be implemented by students
-        throw new System.NotImplementedException();
+        IJob job1 = null;
+        foreach(IJob job in jobs)
+        {
+            if(job.Id == id)
+            {
+                job1 = job;
+            }
+        }
+        if(job1 == null)
+        {
+            return false;
+        }
+        int index = Array.IndexOf(jobs, job1);
+
+        for(int i = index; i < this.Capacity -1; i++)
+        {
+            jobs[i] = jobs[i + 1];
+        }
+        count--;
+
+        return true;
     }
 
-    public IJob[] ToArray() {
+    public IJob[] ToArray()
+    {
         //To be implemented by students
         throw new System.NotImplementedException();
     }

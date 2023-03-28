@@ -65,7 +65,7 @@ public interface IJobCollection {
     /// 
     /// Post: returns a copy of the job in this job collection which has the same id as the 
     /// supplied job id; if no such a job exists, returns null. All existing content in this collection 
-	/// will be as it waspreviously. 
+	/// will be as it was previously. 
     /// </summary>
     public IJob? Find( uint id );
 
@@ -76,7 +76,8 @@ public interface IJobCollection {
     /// 
     /// Pre: nil 
     /// 
-    /// Post: returns true, if the job is present in this job coolection and the job has been removed from this job collection, new Count = old Count - 1 and new Cacpity = old Capcity; otherwise, returns false, new Count = old Count  and new Cacpity = old Capcity;
+    /// Post: returns true, if the job is present in this job coolection and the job has been removed from this job collection, new Count = old Count - 1 and 
+    /// new Cacpity = old Capcity; otherwise, returns false, new Count = old Count  and new Cacpity = old Capcity;
     /// if not present, this job collection remains unchanged, the total number of jobs remains the same and return false.
     /// </summary>
     public bool Remove(uint id); 

@@ -69,9 +69,7 @@ public class Job : IJob {
 		else
 		{
 			return false;
-		}
-		
-        throw new System.NotImplementedException();
+		}	
 
     }
 
@@ -86,7 +84,7 @@ public class Job : IJob {
 		{
 			return false;
 		}
-        throw new System.NotImplementedException();
+      
 
     }
 
@@ -101,7 +99,7 @@ public class Job : IJob {
 		{
 			return false;
 		}
-        throw new System.NotImplementedException();
+       
 
     }
 
@@ -116,7 +114,6 @@ public class Job : IJob {
 		{
 			return false;
 		}
-        throw new System.NotImplementedException();
 
     }
 
