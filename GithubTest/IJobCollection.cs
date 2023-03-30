@@ -76,7 +76,7 @@ public interface IJobCollection {
     /// 
     /// Pre: nil 
     /// 
-    /// Post: returns true, if the job is present in this job coolection and the job has been removed from this job collection, new Count = old Count - 1 and 
+    /// Post: returns true, if the job is present in this job collection and the job has been removed from this job collection, new Count = old Count - 1 and 
     /// new Cacpity = old Capcity; otherwise, returns false, new Count = old Count  and new Cacpity = old Capcity;
     /// if not present, this job collection remains unchanged, the total number of jobs remains the same and return false.
     /// </summary>

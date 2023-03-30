@@ -95,11 +95,11 @@ public class JobCollection : IJobCollection
             return false;
         }
         int index = Array.IndexOf(jobs, job1);
-
-        for(int i = index; i < this.Capacity -1; i++)
+        for(int i = index; i < count -1; i++)
         {
             jobs[i] = jobs[i + 1];
         }
+        jobs[count - 1] = null;
         count--;
 
         return true;
@@ -108,6 +108,7 @@ public class JobCollection : IJobCollection
     public IJob[] ToArray()
     {
         //To be implemented by students
-        throw new System.NotImplementedException();
+      
+        return this.jobs.ToArray();
     }
 }
