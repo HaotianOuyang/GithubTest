@@ -108,7 +108,8 @@ public class JobCollection : IJobCollection
     public IJob[] ToArray()
     {
         //To be implemented by students
-      
-        return this.jobs.ToArray();
+        IJob[] newJobs;
+        newJobs = jobs.ToArray();
+        return newJobs;
     }
 }
