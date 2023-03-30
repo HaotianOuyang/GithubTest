@@ -108,6 +108,8 @@ public class JobCollection : IJobCollection
     public IJob[] ToArray()
     {
         //To be implemented by students
-        throw new System.NotImplementedException();
+        IJob[] newJobs;
+        newJobs = jobs.ToArray();
+        return newJobs;
     }
 }
